@@ -1,3 +1,5 @@
+#include <stdlib.h>
+#include <time.h>
 #include <stdio.h>
 /**
  * main - Entry point
@@ -5,14 +7,18 @@
  */
 int main(void)
 {
-	char c;
+	int a = 48;
 
-	for (c = '0'; c <= '9'; c++)
-	putchar(c);
-
-	for (c = 'a'; c <= 'f'; c++)
-	putchar(c);
-
+	while (a != 103)
+	{
+		if (a > 57 && a < 97)
+		{
+			a++;
+			continue;
+		}
+		putchar(a);
+		a++;
+	}
 	putchar('\n');
 	return (0);
 }
