@@ -8,7 +8,6 @@
 int main(void)
 {
 	int a = 48;
-
 	while (a != 103)
 	{
 		if (a > 57 && a < 97)
