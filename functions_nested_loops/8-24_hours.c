@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * jack_bauer function - print every minute of a day
+ * jack_bauer - print the every minute of a day
  * Return: Always 0 (Success)
  */
 
