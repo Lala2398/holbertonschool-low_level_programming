@@ -8,9 +8,9 @@
  */
 int main(int argc, char **argv)
 {
-	int i, count =0 ;
+	int i, count = 0;
 	(void) argv;
-	for ( i=1 ; i< argc; i++)
+	for (i = 1; i < argc; i++)
 	count++;
 	printf("%d\n", count);
 	return (0);
