@@ -8,8 +8,8 @@
  */
 int main(int argc, char **argv)
 {
-	(void) argv;
     int i, count =0 ;
+    (void) argv;
     for ( i=1 ; i< argc; i++)
     count++;
 	printf("%d\n", count);
