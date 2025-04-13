@@ -39,11 +39,19 @@ int main(int ac, char *av[])
         exit(99);
     }
 
-    while ((rd_stat = read(fd_from, buffer, 1024)) > 0)
+    while (1)
     {
-        int wr_stat;
-
-        wr_stat = write(fd_to, buffer, rd_stat);
+        rd_stat = read(fd_from, buffer, 1024);
+        if (rd_stat == -1)
+        {
+            dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+            close(fd_from);
+            close(fd_to);
+            exit(98);
+        }
+        if (rd_stat == 0)
+            break;
+        int wr_stat = write(fd_to, buffer, rd_stat);
         if (wr_stat != rd_stat || wr_stat == -1)
         {
             dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
@@ -51,14 +59,6 @@ int main(int ac, char *av[])
             close(fd_to);
             exit(99);
         }
-    }
-
-    if (rd_stat == -1)
-    {
-        dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-        close(fd_from);
-        close(fd_to);
-        exit(98);
     }
 
     if (close(fd_from) == -1)
